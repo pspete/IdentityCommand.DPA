@@ -1,0 +1,48 @@
+Function New-DPAPolicyFQDNRuleDefinition {
+    [CmdletBinding()]
+    param(
+        [parameter(
+            Mandatory = $true,
+            ValueFromPipelinebyPropertyName = $true
+        )]
+        [ValidateSet('EXACTLY', 'WILDCARD', 'PREFIX', 'SUFFIX', 'CONTAINS')]
+        [string]$operator,
+
+        [parameter(
+            Mandatory = $true,
+            ValueFromPipelinebyPropertyName = $true
+        )]
+        [string]$computernamePattern,
+
+        [parameter(
+            Mandatory = $true,
+            ValueFromPipelinebyPropertyName = $true
+        )]
+        [string]$domain
+    )
+
+    Begin { }
+
+    Process {
+        $boundParameters = $PSBoundParameters | Get-Parameter -ParametersToRemove FQDNRuleDefinition
+
+        $boundParameters.keys | ForEach-Object {
+            $FQDNRuleDefinition = [pscustomobject]@{
+                'operator'            = $null
+                'computernamePattern' = $null
+                'domain'              = $null
+            }
+        } {
+
+            $FQDNRuleDefinition.$PSItem = $boundParameters[$PSItem]
+
+        } {
+
+            $FQDNRuleDefinition | Add-CustomType -Type IdCmd.DPA.Definition.Policy.Provider.FQDNRule
+
+        }
+    }
+
+    End {}
+
+}
