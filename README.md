@@ -2,7 +2,7 @@
 
 [Logo]:/docs/media/images/IdentityCommand.DPA.png
 
-# IdentityCommand.DPA.DPA
+# IdentityCommand.DPA
 
 IdentityCommand.DPA [Work in Progress] is a PowerShell module that provides a set of easy-to-use commands, allowing you to interact with the API for a CyberArk Dynamic Privileged Access from within the PowerShell environment.
 
