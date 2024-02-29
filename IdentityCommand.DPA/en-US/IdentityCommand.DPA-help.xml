@@ -732,7 +732,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-DPASSHPublicKey</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="subscription_id">
           <maml:name>workspaceId</maml:name>
           <maml:description>
             <maml:para>The workspace ID of the environment</maml:para>
@@ -744,17 +744,36 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-          <maml:name>workspaceType</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>deploymentScript</maml:name>
           <maml:description>
-            <maml:para>The workspace type of workspaceId</maml:para>
+            <maml:para>Specify to generate an SSH CA public key plus a deployment script for the specified workspace</maml:para>
           </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">AWS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AZURE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ON-PREMISE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GCP</command:parameterValue>
-          </command:parameterValueGroup>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>AWS</maml:name>
+          <maml:description>
+            <maml:para>Specify to target AWS DPA resource identified by `workspaceId`</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-DPASSHPublicKey</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="subscription_id">
+          <maml:name>workspaceId</maml:name>
+          <maml:description>
+            <maml:para>The workspace ID of the environment</maml:para>
+          </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
@@ -766,6 +785,79 @@
           <maml:name>deploymentScript</maml:name>
           <maml:description>
             <maml:para>Specify to generate an SSH CA public key plus a deployment script for the specified workspace</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Azure</maml:name>
+          <maml:description>
+            <maml:para>Specify to target Azure DPA resource identified by `workspaceId`</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-DPASSHPublicKey</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="subscription_id">
+          <maml:name>workspaceId</maml:name>
+          <maml:description>
+            <maml:para>The workspace ID of the environment</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>deploymentScript</maml:name>
+          <maml:description>
+            <maml:para>Specify to generate an SSH CA public key plus a deployment script for the specified workspace</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>GCP</maml:name>
+          <maml:description>
+            <maml:para>Specify to target GCP DPA resource identified by `workspaceId`</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-DPASSHPublicKey</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>deploymentScript</maml:name>
+          <maml:description>
+            <maml:para>Specify to generate an SSH CA public key plus a deployment script for the specified workspace</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>OnPrem</maml:name>
+          <maml:description>
+            <maml:para>Specify to target On-Premise DPA resource</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -788,7 +880,7 @@
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="subscription_id">
         <maml:name>workspaceId</maml:name>
         <maml:description>
           <maml:para>The workspace ID of the environment</maml:para>
@@ -800,17 +892,53 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
-        <maml:name>workspaceType</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>AWS</maml:name>
         <maml:description>
-          <maml:para>The workspace type of workspaceId</maml:para>
+          <maml:para>Specify to target AWS DPA resource identified by `workspaceId`</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>Azure</maml:name>
+        <maml:description>
+          <maml:para>Specify to target Azure DPA resource identified by `workspaceId`</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>GCP</maml:name>
+        <maml:description>
+          <maml:para>Specify to target GCP DPA resource identified by `workspaceId`</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>OnPrem</maml:name>
+        <maml:description>
+          <maml:para>Specify to target On-Premise DPA resource</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -849,16 +977,16 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Get-DPASSHPublicKey -workspaceId SomeID -workspaceType AWS</dev:code>
+        <dev:code>Get-DPASSHPublicKey -AWS -workspaceId SomeID</dev:code>
         <dev:remarks>
-          <maml:para>Get public key details for specified workspace</maml:para>
+          <maml:para>Get public key details for specified AWS workspace</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>Get-DPASSHPublicKey -workspaceId SomeID -workspaceType AZURE -deploymentScript</dev:code>
+        <dev:code>Get-DPASSHPublicKey -AZURE -workspaceId SomeID -deploymentScript</dev:code>
         <dev:remarks>
-          <maml:para>Get SSH public key details for specified workspace and SSH key deployment script</maml:para>
+          <maml:para>Get SSH public key details with SSH key deployment script for specified Azure workspace</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

@@ -50,6 +50,7 @@ The object output by this function is provided as input for the `providersData` 
 ```powershell
 $Provider = New-DPAPolicyProviderDefinition -OnPrem -fqdnRulesConjunction OR -fqdnRules $FQDNrules
 ```
+
 Creates a provider definition for on-premise connections.
 
 The `$FQDNrules` value is output from the `New-DPAPolicyFQDNRuleDefinition` function.
@@ -60,6 +61,7 @@ The `$Provider` variable in the above example is used as input for the `provider
 ```powershell
 $Provider = New-DPAPolicyProviderDefinition -AWS -regions "us-east-1","us-east-2" -tags @{"Key"="env";"Value"=@("prod")}
 ```
+
 Creates a provider definition for AWS connections.
 
 The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
@@ -68,6 +70,7 @@ The `$Provider` variable in the above example is used as input for the `provider
 ```powershell
 $Provider = New-DPAPolicyProviderDefinition -Azure -regions "eastus2","eastus" -tags @{"Key"="env";"Value"=@("prod")}
 ```
+
 Creates a provider definition for Azure connections.
 
 The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
@@ -76,6 +79,7 @@ The `$Provider` variable in the above example is used as input for the `provider
 ```powershell
 $Provider = New-DPAPolicyProviderDefinition -GCP -regions "asia-east1","us-east1" -labels @{"Key"="env";"Value"=@("prod")}
 ```
+
 Creates a provider definition for GCP connections.
 
 The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
@@ -87,6 +91,7 @@ $Provider = New-DPAPolicyProviderDefinition -AWS -regions "us-east-1","us-east-2
 $Provider = New-DPAPolicyProviderDefinition -Azure -regions "eastus2","eastus" -tags @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Provider
 $Provider = New-DPAPolicyProviderDefinition -GCP -regions "asia-east1","us-east1" -labels @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Provider
 ```
+
 Creates a provider definition for on-premise, AWS, Azure & GCP connections.
 
 The `$FQDNrules` value is output from the `New-DPAPolicyFQDNRuleDefinition` function.

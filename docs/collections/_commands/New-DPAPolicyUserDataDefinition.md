@@ -35,8 +35,6 @@ Creates an object for inclusion as a user access rule of a DPA Policy.
 
 This function is used to provide the object for the `userData` parameter when defining a User Access Rules using the  `New-DPAPolicyUserAccessRuleDefinition` function.
 
-
-
 ## EXAMPLES
 
 ### Example 1

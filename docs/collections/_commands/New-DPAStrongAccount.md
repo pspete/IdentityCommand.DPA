@@ -70,8 +70,6 @@ New-DPAStrongAccount -safe DBAccts -account_name Database-DBHost-somedomain-dbus
 
 Creates a database strong account which is vaulted in Privilege Cloud
 
-
-
 ## PARAMETERS
 
 ### -account_domain

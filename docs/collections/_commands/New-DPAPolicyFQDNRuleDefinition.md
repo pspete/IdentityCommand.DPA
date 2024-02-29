@@ -30,6 +30,7 @@ The object output by this function is used as input for the `fqdnRules` paramete
 ```powershell
 $FQDNrules = New-DPAPolicyFQDNRuleDefinition -operator EXACTLY -computernamePattern SomeHost -domain SomeDomain.com
 ```
+
 Creates the definition of an FQDN rule to exactly match a virtual machine named SomeHost.SomeDomain.com
 
 The `$FQDNrules` variable in the above example is used as input for the `fqdnRules` parameter of the `New-DPAPolicyProviderDefinition` function.
@@ -43,6 +44,7 @@ $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator SUFFIX -computernamePatt
 $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator CONTAINS -computernamePattern SQL -domain SomeDomain.com
 $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator PREFIX -computernamePattern DC1 -domain SomeDomain.com
 ```
+
 Creates a definition of FQDN rules to match virtual machines according to the parameter values specified.
 
 The `$FQDNrules` variable in the above example is used as input for the `fqdnRules` parameter of the `New-DPAPolicyProviderDefinition` function.
