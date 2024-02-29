@@ -12,8 +12,24 @@ Return details of SSH Public keys
 
 ## SYNTAX
 
+### AWS
 ```
-Get-DPASSHPublicKey [-workspaceId] <String> [-workspaceType] <String> [-deploymentScript] [<CommonParameters>]
+Get-DPASSHPublicKey [-AWS] [-workspaceId] <String> [-deploymentScript] [<CommonParameters>]
+```
+
+### AZURE
+```
+Get-DPASSHPublicKey [-Azure] [-workspaceId] <String> [-deploymentScript] [<CommonParameters>]
+```
+
+### ON-PREMISE
+```
+Get-DPASSHPublicKey [-OnPrem] [-deploymentScript] [<CommonParameters>]
+```
+
+### GCP
+```
+Get-DPASSHPublicKey [-GCP] [-workspaceId] <String> [-deploymentScript] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,17 +39,17 @@ Return SSH CA public key details
 
 ### Example 1
 ```powershell
-Get-DPASSHPublicKey -workspaceId SomeID -workspaceType AWS
+Get-DPASSHPublicKey -AWS -workspaceId SomeID
 ```
 
-Get public key details for specified workspace
+Get public key details for specified AWS workspace
 
 ### Example 2
 ```powershell
-Get-DPASSHPublicKey -workspaceId SomeID -workspaceType AZURE -deploymentScript
+Get-DPASSHPublicKey -AZURE -workspaceId SomeID -deploymentScript
 ```
 
-Get SSH public key details for specified workspace and SSH key deployment script
+Get SSH public key details with SSH key deployment script for specified Azure workspace
 
 ## PARAMETERS
 
@@ -57,8 +73,8 @@ The workspace ID of the environment
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: AWS, AZURE, GCP
+Aliases: subscription_id
 
 Required: True
 Position: 0
@@ -67,17 +83,61 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -workspaceType
-The workspace type of workspaceId
+### -AWS
+Specify to target AWS DPA resource identified by `workspaceId`
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: SwitchParameter
+Parameter Sets: AWS
 Aliases:
-Accepted values: AWS, AZURE, ON-PREMISE, GCP
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Azure
+Specify to target Azure DPA resource identified by `workspaceId`
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AZURE
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GCP
+Specify to target GCP DPA resource identified by `workspaceId`
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: GCP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OnPrem
+Specify to target On-Premise DPA resource
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ON-PREMISE
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
