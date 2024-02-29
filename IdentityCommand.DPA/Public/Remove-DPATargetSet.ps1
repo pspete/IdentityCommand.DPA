@@ -1,6 +1,6 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Remove-DPATargetSet {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -30,11 +30,13 @@ function Remove-DPATargetSet {
 
         $Request.Add('Uri', $URI)
 
-        #Send Request
-        $result = Invoke-IDRestMethod @Request
+        if ($PSCmdlet.ShouldProcess($name, 'Delete DPA Target Set')) {
+            #Send Request
+            $result = Invoke-IDRestMethod @Request
 
-        if ($null -ne $result) {
-            $result.results
+            if ($null -ne $result) {
+                $result.results
+            }
         }
 
     }#process

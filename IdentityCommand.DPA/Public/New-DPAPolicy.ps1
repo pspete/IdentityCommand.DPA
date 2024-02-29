@@ -1,6 +1,7 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function New-DPAPolicy {
-    [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', Justification = 'False Positive')]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -112,16 +113,16 @@ function New-DPAPolicy {
             #Create Request Body
             $body = $Properties | ConvertTo-Json -Depth 8
         }
+        if ($PSCmdlet.ShouldProcess($policyName, 'Create New DPA Policy')) {
+            #Send Request
+            $result = Invoke-IDRestMethod -Uri $URI -Method POST -Body $body
 
-        #Send Request
-        $result = Invoke-IDRestMethod -Uri $URI -Method POST -Body $body
+            if ($null -ne $result) {
 
-        if ($null -ne $result) {
+                $result
 
-            $result
-
+            }
         }
-
     }#process
 
     END { }#end

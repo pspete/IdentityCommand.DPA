@@ -1,6 +1,7 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Remove-DPAStrongAccount {
-    [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', Justification = 'False Positive')]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -32,16 +33,16 @@ function Remove-DPAStrongAccount {
             }
         }
 
+        if ($PSCmdlet.ShouldProcess($secret_id, 'Delete DPA Strong Account')) {
+            #Send Request
+            $result = Invoke-IDRestMethod -Uri $URI -Method DELETE
 
-        #Send Request
-        $result = Invoke-IDRestMethod -Uri $URI -Method DELETE
+            if ($null -ne $result) {
 
-        if ($null -ne $result) {
+                $result
 
-            $result
-
+            }
         }
-
     }#process
 
     END {

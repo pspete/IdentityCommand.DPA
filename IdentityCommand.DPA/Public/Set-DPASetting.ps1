@@ -1,6 +1,7 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Set-DPASetting {
-    [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', Justification = 'False Positive')]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -314,15 +315,16 @@ function Set-DPASetting {
             $body = $Properties | ConvertTo-Json
         }
 
-        #Send Request
-        $result = Invoke-IDRestMethod -Uri $URI -Method PATCH -Body $body
+        if ($PSCmdlet.ShouldProcess($PSCmdlet.ParameterSetName, 'Set DPA Setting')) {
+            #Send Request
+            $result = Invoke-IDRestMethod -Uri $URI -Method PATCH -Body $body
 
-        if ($null -ne $result) {
+            if ($null -ne $result) {
 
-            $result
+                $result
 
+            }
         }
-
     }#process
 
     END {

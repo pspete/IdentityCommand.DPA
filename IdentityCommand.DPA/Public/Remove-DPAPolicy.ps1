@@ -1,6 +1,6 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Remove-DPAPolicy {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -15,15 +15,16 @@ function Remove-DPAPolicy {
 
         $URI = "$($ISPSSSession.tenant_url)/api/access-policies/$policyid"
 
-        #Send Request
-        $result = Invoke-IDRestMethod -Uri $URI -Method DELETE
+        if ($PSCmdlet.ShouldProcess($policyid, 'Delete DPA Policy')) {
+            #Send Request
+            $result = Invoke-IDRestMethod -Uri $URI -Method DELETE
 
-        if ($null -ne $result) {
+            if ($null -ne $result) {
 
-            $result
+                $result
 
+            }
         }
-
     }#process
 
     END {

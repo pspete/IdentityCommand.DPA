@@ -1,6 +1,7 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function New-DPAStrongAccount {
-    [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', Justification = 'False Positive')]
+    [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory = $true,
@@ -173,16 +174,16 @@ function New-DPAStrongAccount {
 
         #Create Request Body
         $body = $StrongAccount | ConvertTo-Json
+        if ($PSCmdlet.ShouldProcess($secret_name, 'Create New DPA Strong Account')) {
+            #Send Request
+            $result = Invoke-IDRestMethod -Uri $URI -Method POST -Body $body
 
-        #Send Request
-        $result = Invoke-IDRestMethod -Uri $URI -Method POST -Body $body
+            if ($null -ne $result) {
 
-        if ($null -ne $result) {
+                $result
 
-            $result
-
+            }
         }
-
     }#process
 
     END {
