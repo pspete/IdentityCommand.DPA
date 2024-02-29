@@ -92,7 +92,8 @@
         'Get-DPASSHPublicKey',
         'Get-DPAStrongAccount',
         'New-DPAStrongAccount',
-        'Remove-DPAStrongAccount'
+        'Remove-DPAStrongAccount',
+        'Get-DPAResource'
 
     )
 

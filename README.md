@@ -69,6 +69,7 @@ The commands currently available in the _IdentityCommand.DPA_ module are listed 
 | `Get-DPASSHPublicKey`                  | Get DPA SSH Public Keys                                                          |
 | `Get-DPAStrongAccount`                 | Get details of configured string accounts                                        |
 | `Get-DPATargetSet`                     | Get details of configured target sets                                            |
+| `Get-DPAResource`                      | Get details of configured resources                                              |
 | `New-DPAPolicy`                        | Configures a new DPA recurring access policy                                     |
 | `New-DPAPolicyConnectAsDefinition`     | Defines ConnectAs profile for DPA policy                                         |
 | `New-DPAPolicyFQDNRuleDefinition`      | Defines FQDN Rules for DPA Policy                                                |
