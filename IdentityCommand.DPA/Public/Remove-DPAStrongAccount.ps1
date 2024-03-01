@@ -1,6 +1,6 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Remove-DPAStrongAccount {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', Justification = 'False Positive')]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', "", Justification = 'False Positive')]
     [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(

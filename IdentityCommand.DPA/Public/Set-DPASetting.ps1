@@ -1,6 +1,6 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Set-DPASetting {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', Justification = 'False Positive')]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '', Justification = 'False Positive')]
     [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
