@@ -21,7 +21,7 @@ Initial commit of `IdentityCommand.DPA` module
 - `Connect-DPATenant`
 - `Get-DPAConnectorSetupScript`
 - `Get-DPAPolicy`
-- `Get-DPASession`
+- `Get-DPAModuleData`
 - `Get-DPASetting`
 - `Get-DPASSHPublicKey`
 - `Get-DPAStrongAccount`

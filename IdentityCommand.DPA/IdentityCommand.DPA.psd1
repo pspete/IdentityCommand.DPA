@@ -73,7 +73,7 @@
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @(
         'Connect-DPATenant',
-        'Get-DPASession',
+        'Get-DPAModuleData',
         'Get-DPAPolicy',
         'Remove-DPAPolicy',
         'Set-DPAPolicy',
@@ -94,6 +94,7 @@
         'New-DPAStrongAccount',
         'Remove-DPAStrongAccount',
         'Get-DPAResource'
+        'Get-DPASession'
 
     )
 

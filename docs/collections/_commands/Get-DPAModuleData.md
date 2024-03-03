@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-DPASession
+# Get-DPAModuleData
 
 ## SYNOPSIS
 Get details of the current DPA session
@@ -13,7 +13,7 @@ Get details of the current DPA session
 ## SYNTAX
 
 ```
-Get-DPASession [<CommonParameters>]
+Get-DPAModuleData [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Useful data like the last command, last command results and session elapsed time
 
 ### Example 1
 ```powershell
-Get-DPASession
+Get-DPAModuleData
 ```
 
 Returns details relating to the module session from the script scope.

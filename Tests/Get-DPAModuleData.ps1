@@ -24,7 +24,7 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
     InModuleScope $(Split-Path (Split-Path (Split-Path -Parent $PSCommandPath) -Parent) -Leaf ) {
 
         BeforeEach {
-            $response = Get-DPASession
+            $response = Get-DPAModuleData
 
         }
 

@@ -31,10 +31,10 @@ Connect-DPATenant -tenant_url https://sometenant.dpa.cyberark.cloud
 
 ### Module Scope Variables & Command  Invocation Data
 
-The `Get-DPASession` command can be used to return data from the module scope:
+The `Get-DPAModuleData` command can be used to return data from the module scope:
 
 ```powershell
-PS C:\> Get-IDSession
+PS C:\> Get-DPAModuleData
 
 Name                           Value
 ----                           -----
@@ -64,7 +64,7 @@ The commands currently available in the _IdentityCommand.DPA_ module are listed 
 | `Add-DPATargetSet`                     | Adds a DPA Target Set                                                            |
 | `Get-DPAConnectorSetupScript`          | Gets setup scripts for DPA connectors                                            |
 | `Get-DPAPolicy`                        | Gets configured DPA policies                                                     |
-| `Get-DPASession`                       | Outputs data relating to the `IdentityCommand.DPA` session                       |
+| `Get-DPAModuleData`                    | Outputs data relating to the `IdentityCommand.DPA` module session                |
 | `Get-DPASetting`                       | Get DPA settings                                                                 |
 | `Get-DPASSHPublicKey`                  | Get DPA SSH Public Keys                                                          |
 | `Get-DPAStrongAccount`                 | Get details of configured string accounts                                        |
