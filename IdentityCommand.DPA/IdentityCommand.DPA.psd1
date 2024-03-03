@@ -12,7 +12,7 @@
     RootModule        = 'IdentityCommand.DPA.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.5'
+    ModuleVersion     = '0.0.00'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -94,7 +94,8 @@
         'New-DPAStrongAccount',
         'Remove-DPAStrongAccount',
         'Get-DPAResource'
-        'Get-DPASession'
+        'Get-DPASession',
+        'Get-DPAConnector'
 
     )
 

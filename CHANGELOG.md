@@ -19,6 +19,7 @@ Initial commit of `IdentityCommand.DPA` module
 ### Added
 - `Add-DPATargetSet`
 - `Connect-DPATenant`
+- `Get-DPAConnector`
 - `Get-DPAConnectorSetupScript`
 - `Get-DPAPolicy`
 - `Get-DPAModuleData`
