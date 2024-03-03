@@ -95,7 +95,8 @@
         'Remove-DPAStrongAccount',
         'Get-DPAResource'
         'Get-DPASession',
-        'Get-DPAConnector'
+        'Get-DPAConnector',
+        'Get-DPACertificate'
 
     )
 

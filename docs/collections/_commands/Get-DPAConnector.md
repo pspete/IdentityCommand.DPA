@@ -22,14 +22,14 @@ Returns details of all DPA connectors, or a specific DPA connector which providi
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAConnector
 ```
 
 Get details of all configured DPA connectors
 
 ### Example 1
-```powershell
+```
 Get-DPAConnector -connector_id SomeConnectorID
 ```
 
