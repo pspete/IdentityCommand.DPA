@@ -61,7 +61,9 @@ The commands currently available in the _IdentityCommand.DPA_ module are listed 
 | Function                               | Description                                                                      |
 |----------------------------------------|----------------------------------------------------------------------------------|
 | `Connect-DPATenant`                    | Obtains a Bearer token from an authenticated `IdentityCommand` session for DPA   |
+| `Connect-DPATarget`                    | Get RDP file for connection to DPA target                                        |
 | `Add-DPATargetSet`                     | Adds a DPA Target Set                                                            |
+| `Get-DPACertificate`                   | Get details of DPA certificates                                                  |
 | `Get-DPAConnector`                     | Get details of DPA connectors                                                    |
 | `Get-DPAConnectorSetupScript`          | Gets setup scripts for DPA connectors                                            |
 | `Get-DPAPolicy`                        | Gets configured DPA policies                                                     |

@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Returns details of DPA certificates
+
 ## SYNTAX
 
 ```

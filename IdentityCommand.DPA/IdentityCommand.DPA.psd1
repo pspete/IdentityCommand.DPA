@@ -96,7 +96,8 @@
         'Get-DPAResource'
         'Get-DPASession',
         'Get-DPAConnector',
-        'Get-DPACertificate'
+        'Get-DPACertificate',
+        'Connect-DPATarget'
 
     )
 
