@@ -125,7 +125,7 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('CyberArk', 'CyberArk-API', 'CyberArk-DPA', 'DPA', 'Dynamic Privileged Access', 'REST', 'API')
+            Tags         = @('CyberArk', 'CyberArk-API', 'CyberArk-DPA', 'DPA', 'Dynamic-Privileged-Access', 'REST', 'API')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://github.com/pspete/IdentityCommand.DPA/blob/main/LICENSE.md'
