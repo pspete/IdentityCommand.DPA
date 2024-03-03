@@ -23,6 +23,7 @@ Initial commit of `IdentityCommand.DPA` module
 - `Get-DPAPolicy`
 - `Get-DPAModuleData`
 - `Get-DPASetting`
+- `Get-DPASession`
 - `Get-DPASSHPublicKey`
 - `Get-DPAStrongAccount`
 - `Get-DPATargetSet`

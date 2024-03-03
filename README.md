@@ -66,6 +66,7 @@ The commands currently available in the _IdentityCommand.DPA_ module are listed 
 | `Get-DPAPolicy`                        | Gets configured DPA policies                                                     |
 | `Get-DPAModuleData`                    | Outputs data relating to the `IdentityCommand.DPA` module session                |
 | `Get-DPASetting`                       | Get DPA settings                                                                 |
+| `Get-DPASession`                       | Get DPA session diagnostic event data                                            |
 | `Get-DPASSHPublicKey`                  | Get DPA SSH Public Keys                                                          |
 | `Get-DPAStrongAccount`                 | Get details of configured string accounts                                        |
 | `Get-DPATargetSet`                     | Get details of configured target sets                                            |

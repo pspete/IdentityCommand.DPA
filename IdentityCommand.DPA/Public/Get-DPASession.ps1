@@ -1,23 +1,71 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
-Function Get-DPASession {
-
+function Get-DPASession {
     [CmdletBinding()]
-    Param ()
+    param(
+        [parameter(
+            Mandatory = $false,
+            ValueFromPipelinebyPropertyName = $true
+        )]
+        [datetime]$minStartedTime,
+
+        [parameter(
+            Mandatory = $false,
+            ValueFromPipelinebyPropertyName = $true
+        )]
+        [datetime]$maxStartedTime
+    )
 
     BEGIN { }#begin
 
     PROCESS {
 
-        #Calculate the time elapsed since the start of the session and include in return data
-        if ($null -ne $ISPSSSession.StartTime) {
-            $ISPSSSession.ElapsedTime = '{0:HH:mm:ss}' -f ([datetime]$($(Get-Date) - $($ISPSSSession.StartTime)).Ticks)
-        } else { $ISPSSSession.ElapsedTime = $null }
+        $URI = "$($ISPSSSession.tenant_url)/api/monitoring/sessions"
 
-        #Deep Copy the $psPASSession session object and return as psPAS Session type.
-        Get-SessionClone -InputObject $ISPSSSession | Add-CustomType -Type IdCmd.Session
+        $boundparameters = $PSBoundParameters | Get-Parameter
+
+        #If no arguments initialise boundparameters
+        if ($null -eq $boundparameters) {
+            $boundparameters = @{ }
+        }
+
+        #Max Time UTC
+        If ($PSBoundParameters.ContainsKey('maxStartedTime')) {
+            $MaxDate = (Get-Date $maxStartedTime).ToUniversalTime()
+        } Else {
+            #MaxTime is now
+            $MaxDate = (Get-Date).ToUniversalTime()
+        }
+        #Min Time UTC
+        If ($PSBoundParameters.ContainsKey('minStartedTime')) {
+            $MinDate = (Get-Date $minStartedTime).ToUniversalTime()
+        } Else {
+            #Min Time is MaxTime - 24 hours
+            $MinDate = (Get-Date $MaxDate).AddDays(-1).ToUniversalTime()
+        }
+
+        #Format maxStartedTime & minStartedTime
+        $boundParameters['maxStartedTime'] = (Get-Date $MaxDate -UFormat '+%Y-%m-%dT%H:%M:%S.000Z').ToString()
+        $boundParameters['minStartedTime'] = (Get-Date $MinDate -UFormat '+%Y-%m-%dT%H:%M:%S.000Z').ToString()
+
+        $QueryString = $($boundparameters | ConvertTo-QueryString)
+
+        $URI = "$URI`?$QueryString"
+
+        #Send Request
+        $result = Invoke-IDRestMethod -Uri $URI -Method GET
+
+        if ($null -ne $result) {
+
+            #TODO $result.total count might be ued for paging
+
+            $result.items
+
+        }
 
     }#process
 
-    END { }#end
+    END {
+
+    }#end
 
 }
