@@ -37,37 +37,37 @@ New-DPAPolicyConnectAsDefinition [-GCP] [-ssh <String>] [-assignGroups <String[]
 ```
 
 ## DESCRIPTION
-Outputs an object to be provided as input for the `connectAs` parameter of the `New-DPAPolicyUserAccessRuleDefinition` function.
+Outputs an object to be provided as input for the \`connectAs\` parameter of the \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 The Connect As definition forms part of the User Access Rule defined on a DPA policy.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $ConnectAs = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
 ```
 
 Defines a ConnectAs object which states users connecting via a DPA policy configured with the ConnectAs definition using RDP, will use ephemeral accounts which are added to the the Administrators group for On-Premise Windows servers.
 
-The `$ConnectAs` variable in the above example is used as input for the `connectAs` parameter of the `New-DPAPolicyUserAccessRuleDefinition` function.
+The \`$ConnectAs\` variable in the above example is used as input for the \`connectAs\` parameter of the \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 ### Example 2
-```powershell
+```
 $ConnectAs = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
 $ConnectAs = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs
 $ConnectAs = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs
 $ConnectAs = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs
 ```
 
-Defines a ConnectAs object which states users connecting via a DPA policy configured with the ConnectAs definition:
-- Use ephemeral accounts added to the `Administrators` group for on-premise windows servers
-- Use ephemeral accounts added to the `Administrators` & `Remote Desktop Users`group for AWS windows servers
-- Connect as the `ec2-user` local target user for AWS linux servers
-- Connect as the `azureuser` local target user for Azure linux servers
-- Connect as the `root` local target user for GCP linux servers
+Defines a ConnectAs object which states users connecting via a DPA policy configured with the ConnectAs definition: - Use ephemeral accounts added to the \`Administrators\` group for on-premise windows servers
 
-The `$ConnectAs` variable in the above example is used as input for the `connectAs` parameter of the `New-DPAPolicyUserAccessRuleDefinition` function.
+- Use ephemeral accounts added to the \`Administrators\` & \`Remote Desktop Users\`group for AWS windows servers
+- Connect as the \`ec2-user\` local target user for AWS linux servers
+- Connect as the \`azureuser\` local target user for Azure linux servers
+- Connect as the \`root\` local target user for GCP linux servers
+
+The \`$ConnectAs\` variable in the above example is used as input for the \`connectAs\` parameter of the \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 ## PARAMETERS
 
@@ -81,7 +81,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -96,7 +96,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -111,7 +111,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -126,7 +126,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -connectAsDefinition
-Add additional data to previous output from `New-DPAPolicyConnectAsDefinition`.
+Add additional data to previous output from \`New-DPAPolicyConnectAsDefinition\`.
 
 Used to build a collection of connectAs definitions when multiple rules will be assigned in a policy.
 
@@ -184,13 +184,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-
 ### System.String
-
 ### System.String[]
-
 ### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
 ### System.Object

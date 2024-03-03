@@ -22,14 +22,14 @@ Returns details of all policies or a specific policy from DPA
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAPolicy
 ```
 
 Get details of all policies from DPA
 
 ### Example 1
-```powershell
+```
 Get-DPAPolicy -policyid 1234-abcd
 ```
 
@@ -58,7 +58,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

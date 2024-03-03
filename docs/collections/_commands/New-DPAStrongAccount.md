@@ -14,26 +14,26 @@ Create a new strong account configuration in DPA
 
 ### VaultedInPrivilegeCloud-DB
 ```
-New-DPAStrongAccount -safe <String> -account_name <String> -secret_name <String> [-database]
- [<CommonParameters>]
+New-DPAStrongAccount -safe <String> -account_name <String> -secret_name <String> [-database] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VaultedInPrivilegeCloud-VM
 ```
 New-DPAStrongAccount -safe <String> -account_name <String> -secret_name <String> -account_domain <String>
- [-certFileName <String>] [<CommonParameters>]
+ [-certFileName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredInDPA-DB
 ```
-New-DPAStrongAccount -username <String> -password <SecureString> -secret_name <String> [-database]
- [<CommonParameters>]
+New-DPAStrongAccount -username <String> -password <SecureString> -secret_name <String> [-database] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### StoredInDPA-VM
 ```
 New-DPAStrongAccount -username <String> -password <SecureString> -secret_name <String> -account_domain <String>
- [-certFileName <String>] [<CommonParameters>]
+ [-certFileName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,28 +43,28 @@ Strong account can be an account already vaulted in Privilege Cloud, or can be s
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 New-DPAStrongAccount -username SomeUser -password $SecureString -secret_name SomeName -account_domain SomeDomain.com
 ```
 
 Creates a virtual machine strong account which is stored in the DPA service
 
 ### Example 2
-```powershell
+```
 New-DPAStrongAccount -username dbuser -password $SecureString -secret_name SomeName -database
 ```
 
 Creates a database strong account which is stored in the DPA service
 
 ### Example 3
-```powershell
+```
 New-DPAStrongAccount -safe StrongAccounts -account_name OS-WinDomain-pspete.dev-someuser -secret_name SomeUser -account_domain pspete.dev
 ```
 
 Creates a virtual machine strong account which is vaulted in Privilege Cloud
 
 ### Example 4
-```powershell
+```
 New-DPAStrongAccount -safe DBAccts -account_name Database-DBHost-somedomain-dbuser -secret_name SomeName -database
 ```
 
@@ -127,7 +127,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -192,17 +192,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ### System.Security.SecureString
-
 ### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
 ### System.Object

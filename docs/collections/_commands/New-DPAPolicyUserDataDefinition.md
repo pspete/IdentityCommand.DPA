@@ -33,21 +33,21 @@ New-DPAPolicyUserDataDefinition [-User] [-name <String>] [-source <String>] [-Us
 ## DESCRIPTION
 Creates an object for inclusion as a user access rule of a DPA Policy.
 
-This function is used to provide the object for the `userData` parameter when defining a User Access Rules using the  `New-DPAPolicyUserAccessRuleDefinition` function.
+This function is used to provide the object for the \`userData\` parameter when defining a User Access Rules using the  \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
 ```
 
 Creates a user data definition for the "DEV_TEAM_ROLE" Identity Role.
 
-The `$UserData` variable in the above example is used as input for the `userData` parameter of the `New-DPAPolicyUserAccessRuleDefinition` function.
+The \`$UserData\` variable in the above example is used as input for the \`userData\` parameter of the \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 ### Example 2
-```powershell
+```
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "SOME_TEAM_ROLE" -UserDataDefinition $UserData
 $UserData = New-DPAPolicyUserDataDefinition -Group -name "DEV_TEAM_GROUP" -UserDataDefinition $UserData
@@ -58,7 +58,7 @@ $UserData = New-DPAPolicyUserDataDefinition -User -name SomeOtherUser -UserDataD
 
 Creates a user data definition for the Roles groups and users specified.
 
-The `$UserData` variable in the above example is used as input for the `userData` parameter of the `New-DPAPolicyUserAccessRuleDefinition` function.
+The \`$UserData\` variable in the above example is used as input for the \`userData\` parameter of the \`New-DPAPolicyUserAccessRuleDefinition\` function.
 
 ## PARAMETERS
 
@@ -74,7 +74,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -91,7 +91,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -110,13 +110,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -UserDataDefinition
-Adds additional data to previous output from `New-DPAPolicyUserDataDefinition`.
+Adds additional data to previous output from \`New-DPAPolicyUserDataDefinition\`.
 
 This is used when multiple users, groups and/or roles are required to be specified in an access rule.
 
@@ -170,11 +170,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-
 ### System.String
-
 ### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
 ### System.Object

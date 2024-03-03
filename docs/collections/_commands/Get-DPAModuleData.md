@@ -26,7 +26,7 @@ Useful data like the last command, last command results and session elapsed time
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAModuleData
 ```
 
@@ -40,7 +40,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object

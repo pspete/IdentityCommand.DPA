@@ -19,12 +19,12 @@ Connect-DPATenant [-tenant_url] <String> [<CommonParameters>]
 ## DESCRIPTION
 Connects to a DPA tenant to be able to run IdentityCommand.DPA module commands against it.
 
-Requires prior authentication to the related ISPSS Identity Shared Services tenant using the `IdentityCommand` module.
+Requires prior authentication to the related ISPSS Identity Shared Services tenant using the \`IdentityCommand\` module.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Connect-DPATenant -tenant_url https://sometenant.dpa.cyberark.cloud
 ```
 
@@ -53,7 +53,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

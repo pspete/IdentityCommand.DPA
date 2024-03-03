@@ -14,12 +14,12 @@ Get details of configured DPA resources
 
 ### discovery/organizations
 ```
-Get-DPAResource [-AWS] -workspaceId <String> [<CommonParameters>]
+Get-DPAResource [-AWS] [-workspaceId <String>] [<CommonParameters>]
 ```
 
 ### discovery/subscriptions
 ```
-Get-DPAResource [-Azure] -workspaceId <String> [<CommonParameters>]
+Get-DPAResource [-Azure] [-workspaceId <String>] [<CommonParameters>]
 ```
 
 ### discovery/onprem
@@ -29,7 +29,7 @@ Get-DPAResource [-OnPrem] [<CommonParameters>]
 
 ### discovery/gcp/organizations
 ```
-Get-DPAResource [-GCP] -workspaceId <String> [<CommonParameters>]
+Get-DPAResource [-GCP] [-workspaceId <String>] [<CommonParameters>]
 ```
 
 ### adb/resources
@@ -45,21 +45,21 @@ Alternatively specify a specific AWS, Azure or GCP workspaceID to get resource d
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAResource -Azure
 ```
 
 Return details of all configured Azure subscription resources
 
 ### Example 2
-```powershell
+```
 Get-DPAResource -Azure -workspaceId d00dWh3r-35My-C4rc-8215-e32ea94649b1
 ```
 
 Return details of specific Azure workspace.
 
 ### Example 3
-```powershell
+```
 Get-DPAResource -AWS
 ```
 
@@ -150,7 +150,7 @@ Type: String
 Parameter Sets: discovery/organizations, discovery/subscriptions, discovery/gcp/organizations
 Aliases: subscription_id
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

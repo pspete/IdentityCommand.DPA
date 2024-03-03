@@ -15,7 +15,7 @@ Create a new DPA policy
 ```
 New-DPAPolicy [-policyName] <String> [[-status] <String>] [[-description] <String>]
  [[-providersData] <PSObject>] [[-startDate] <DateTime>] [[-endDate] <DateTime>]
- [[-userAccessRules] <PSObject[]>] [<CommonParameters>]
+ [[-userAccessRules] <PSObject[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +24,14 @@ Creates new DPA policy using the details specified for any parameters
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 New-DPAPolicy -policyName Some-Policy-Name
 ```
 
 Creates a draft policy with no settings
 
 ### Example 2
-```powershell
+```
 New-DPAPolicy -policyName Some-Policy-Name -status Enabled -description "Policy Description" `
 -providersData $providersData -startDate (Get-Date) -endDate (Get-Date).AddDays(7) `
 -userAccessRules $userAccessRules
@@ -39,46 +39,46 @@ New-DPAPolicy -policyName Some-Policy-Name -status Enabled -description "Policy 
 
 Creates an enabled policy, valid for 7 days with settings according to the parameter values.
 
-`$providersData` object is created using the `New-DPAPolicyProviderDefinition` command
+\`$providersData\` object is created using the \`New-DPAPolicyProviderDefinition\` command
 
-`$userAccessRules` object is created using the `New-DPAPolicyUserAccessRuleDefinition` command
+\`$userAccessRules\` object is created using the \`New-DPAPolicyUserAccessRuleDefinition\` command
 
 ### Example 3
-```powershell
+```
 New-DPAPolicy -policyName Some-Policy-Name -status Enabled -description "Policy Description" `
 -providersData $providersData  -userAccessRules $userAccessRules
 ```
 
 Creates an enabled policy with settings according to the parameter values.
 
-`$providersData` object is created using the `New-DPAPolicyProviderDefinition` command
+\`$providersData\` object is created using the \`New-DPAPolicyProviderDefinition\` command
 
-`$userAccessRules` object is created using the `New-DPAPolicyUserAccessRuleDefinition` command
+\`$userAccessRules\` object is created using the \`New-DPAPolicyUserAccessRuleDefinition\` command
 
 ### Example 4
-```powershell
+```
 New-DPAPolicy -policyName Some-Policy-Name -status Draft -providersData $providersData
 ```
 
 Creates a draft policy with settings according to the parameter values.
 
-`$providersData` object is created using the `New-DPAPolicyProviderDefinition` command
+\`$providersData\` object is created using the \`New-DPAPolicyProviderDefinition\` command
 
 ### Example 5
-```powershell
+```
 New-DPAPolicy -policyName Some-Policy-Name -status Draft -userAccessRules $userAccessRules
 ```
 
 Creates a draft policy with settings according to the parameter values.
 
-`$userAccessRules` object is created using the `New-DPAPolicyUserAccessRuleDefinition` command
+\`$userAccessRules\` object is created using the \`New-DPAPolicyUserAccessRuleDefinition\` command
 
 ### Example 6
-```powershell
-$ConnectAs1 = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
-$ConnectAs1 = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs1
-$ConnectAs2 = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs1
-$ConnectAs2 = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs2
+```
+$ConnectAs = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
+$ConnectAs = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs
+$ConnectAs = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs
+$ConnectAs = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs
 
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "SOME_TEAM_ROLE" -UserDataDefinition $UserData
@@ -220,19 +220,46 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ### System.Management.Automation.PSObject
-
 ### System.DateTime
-
 ### System.Management.Automation.PSObject[]
-
 ## OUTPUTS
 
 ### System.Object

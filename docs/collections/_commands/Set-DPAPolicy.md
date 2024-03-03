@@ -15,7 +15,7 @@ Update DPA access policy
 ```
 Set-DPAPolicy [-policyId] <String> [[-policyName] <String>] [[-status] <String>] [[-description] <String>]
  [[-providersData] <PSObject>] [[-startDate] <DateTime>] [[-endDate] <DateTime>]
- [[-userAccessRules] <PSObject[]>] [<CommonParameters>]
+ [[-userAccessRules] <PSObject[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,21 +24,21 @@ Updates configuration of a recurring access policy configured in DPA.
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Set-DPAPolicy -policyId 1234-abcd -status Enabled
 ```
 
 Set DPA Policy with ID 1234-abcd to "Enabled"
 
 ### Example 2
-```powershell
+```
 Set-DPAPolicy -policyId 1234-abcd -startDate (Get-Date) -endDate (Get-Date).AddDays(7)
 ```
 
 Set DPA Policy with ID 1234-abcd to be valid for the next 7 days
 
 ### Example 3
-```powershell
+```
 Set-DPAPolicy -policyId 1234-abcd -providersData $ProviderData
 ```
 
@@ -46,7 +46,7 @@ Update DPA Policy with ID 1234-abcd with provider configuration held in the $Pro
 ProviderData object is created with the New-DPAPolicyProviderDefinition function.
 
 ### Example 4
-```powershell
+```
 Set-DPAPolicy -policyId 1234-abcd -userAccessRules $AccessRules
 ```
 
@@ -176,19 +176,46 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ### System.Management.Automation.PSObject
-
 ### System.DateTime
-
 ### System.Management.Automation.PSObject[]
-
 ## OUTPUTS
 
 ### System.Object

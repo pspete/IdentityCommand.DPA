@@ -23,14 +23,14 @@ Generates and retuns setup scripts for DPA connectors based on the provided para
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAConnectorSetupScript -connector_type windows -connector_os ON-PREMISE
 ```
 
 Generates a setup script for an on-premise windows DPA connector server
 
 ### Example 2
-```powershell
+```
 Get-DPAConnectorSetupScript -connector_type linux -connector_os AZURE
 ```
 
@@ -91,7 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

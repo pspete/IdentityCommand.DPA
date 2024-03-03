@@ -42,50 +42,50 @@ Defines the data and criteria for providers supported in DPA.
 
 Target machines matching the criteria will be accessible via a policy containing the definition.
 
-The object output by this function is provided as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The object output by this function is provided as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $Provider = New-DPAPolicyProviderDefinition -OnPrem -fqdnRulesConjunction OR -fqdnRules $FQDNrules
 ```
 
 Creates a provider definition for on-premise connections.
 
-The `$FQDNrules` value is output from the `New-DPAPolicyFQDNRuleDefinition` function.
+The \`$FQDNrules\` value is output from the \`New-DPAPolicyFQDNRuleDefinition\` function.
 
-The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The \`$Provider\` variable in the above example is used as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ### Example 2
-```powershell
+```
 $Provider = New-DPAPolicyProviderDefinition -AWS -regions "us-east-1","us-east-2" -tags @{"Key"="env";"Value"=@("prod")}
 ```
 
 Creates a provider definition for AWS connections.
 
-The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The \`$Provider\` variable in the above example is used as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ### Example 3
-```powershell
+```
 $Provider = New-DPAPolicyProviderDefinition -Azure -regions "eastus2","eastus" -tags @{"Key"="env";"Value"=@("prod")}
 ```
 
 Creates a provider definition for Azure connections.
 
-The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The \`$Provider\` variable in the above example is used as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ### Example 4
-```powershell
+```
 $Provider = New-DPAPolicyProviderDefinition -GCP -regions "asia-east1","us-east1" -labels @{"Key"="env";"Value"=@("prod")}
 ```
 
 Creates a provider definition for GCP connections.
 
-The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The \`$Provider\` variable in the above example is used as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ### Example 5
-```powershell
+```
 $Provider = New-DPAPolicyProviderDefinition -OnPrem -fqdnRulesConjunction OR -fqdnRules $FQDNrules
 $Provider = New-DPAPolicyProviderDefinition -AWS -regions "us-east-1","us-east-2" -tags @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Provider
 $Provider = New-DPAPolicyProviderDefinition -Azure -regions "eastus2","eastus" -tags @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Provider
@@ -94,9 +94,9 @@ $Provider = New-DPAPolicyProviderDefinition -GCP -regions "asia-east1","us-east1
 
 Creates a provider definition for on-premise, AWS, Azure & GCP connections.
 
-The `$FQDNrules` value is output from the `New-DPAPolicyFQDNRuleDefinition` function.
+The \`$FQDNrules\` value is output from the \`New-DPAPolicyFQDNRuleDefinition\` function.
 
-The `$Provider` variable in the above example is used as input for the `providersData` parameter of the `New-DPAPolicy` function.
+The \`$Provider\` variable in the above example is used as input for the \`providersData\` parameter of the \`New-DPAPolicy\` function.
 
 ## PARAMETERS
 
@@ -110,7 +110,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -125,7 +125,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -140,7 +140,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -155,13 +155,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ProviderDefinition
-Add additional data to previous output from `New-DPAPolicyProviderDefinition`.
+Add additional data to previous output from \`New-DPAPolicyProviderDefinition\`.
 
 Used to create defninitions which cover multiple providers to be included in a single DPA policy.
 
@@ -367,15 +367,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-
 ### System.String[]
-
 ### System.Management.Automation.PSObject[]
-
 ### System.String
-
 ### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
 ### System.Object

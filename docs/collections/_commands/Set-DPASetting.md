@@ -14,65 +14,66 @@ Updates DPA settings
 
 ### mfaCaching
 ```
-Set-DPASetting [-mfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>]
- [<CommonParameters>]
+Set-DPASetting [-mfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### sshMfaCaching
 ```
-Set-DPASetting [-sshMfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>]
- [<CommonParameters>]
+Set-DPASetting [-sshMfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### rdpMfaCaching
 ```
 Set-DPASetting [-rdpMfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>]
- [-clientIpEnforced <Boolean>] [-tokenUsageCount <Int32>] [<CommonParameters>]
+ [-clientIpEnforced <Boolean>] [-tokenUsageCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### adbMfaCaching
 ```
 Set-DPASetting [-adbMfaCaching] [-isMfaCachingEnabled <Boolean>] [-keyExpirationTimeSec <Int32>]
- [-clientIpEnforced <Boolean>] [-tokenUsageCount <Int32>] [<CommonParameters>]
+ [-clientIpEnforced <Boolean>] [-tokenUsageCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### k8sMfaCaching
 ```
 Set-DPASetting [-k8sMfaCaching] [-keyExpirationTimeSec <Int32>] [-clientIpEnforced <Boolean>]
- [-tokenUsageCount <Int32>] [<CommonParameters>]
+ [-tokenUsageCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### sshCommandAudit
 ```
 Set-DPASetting [-sshCommandAudit] [-isCommandParsingForAuditEnabled <Boolean>] [-shellPromptForAudit <String>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### standingAccess
 ```
 Set-DPASetting [-standingAccess] [-standingAccessAvailable <Boolean>] [-sessionMaxDuration <Int32>]
  [-sessionIdleTime <Int32>] [-fingerprintValidation <Boolean>] [-sshStandingAccessAvailable <Boolean>]
- [-rdpStandingAccessAvailable <Boolean>] [-adbStandingAccessAvailable <Boolean>] [<CommonParameters>]
+ [-rdpStandingAccessAvailable <Boolean>] [-adbStandingAccessAvailable <Boolean>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### rdpFileTransfer
 ```
-Set-DPASetting [-rdpFileTransfer] [-enabled <Boolean>] [<CommonParameters>]
+Set-DPASetting [-rdpFileTransfer] [-enabled <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### certificateValidation
 ```
-Set-DPASetting [-certificateValidation] [-enabled <Boolean>] [<CommonParameters>]
+Set-DPASetting [-certificateValidation] [-enabled <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### rdpKeyboardLayout
 ```
-Set-DPASetting [-rdpKeyboardLayout] [-layout <String>] [<CommonParameters>]
+Set-DPASetting [-rdpKeyboardLayout] [-layout <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### rdpRecording
 ```
-Set-DPASetting [-rdpRecording] [-enabled <Boolean>] [<CommonParameters>]
+Set-DPASetting [-rdpRecording] [-enabled <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,21 +82,21 @@ Enable, disable, or set values for DPA settings.
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Set-DPASetting -sshMfaCaching -isMfaCachingEnabled $true -keyExpirationTimeSec 7200
 ```
 
 Enables SSH MFA Caching and sets timeout for 7200 seconds
 
 ### Example 2
-```powershell
+```
 Set-DPASetting -rdpRecording -enabled $false
 ```
 
 Disables RDP recording
 
 ### Example 3
-```powershell
+```
 Set-DPASetting -rdpFileTransfer -enabled $true
 ```
 
@@ -113,7 +114,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -143,7 +144,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -233,7 +234,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -278,7 +279,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -293,7 +294,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -308,7 +309,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -323,7 +324,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -338,7 +339,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -413,7 +414,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -428,7 +429,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -458,7 +459,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -493,19 +494,46 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-
 ### System.Boolean
-
 ### System.Int32
-
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

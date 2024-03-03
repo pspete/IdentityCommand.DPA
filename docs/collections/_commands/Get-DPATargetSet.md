@@ -23,21 +23,21 @@ Get details of all target sets, target sets associated with a specific strong ac
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPATargetSet
 ```
 
 Get all target sets from DPA
 
 ### Example 2
-```powershell
+```
 Get-DPATargetSet -name somename
 ```
 
 Get a specific target set from DPA
 
 ### Example 1
-```powershell
+```
 Get-DPATargetSet -strongAccountId 1234-abcd
 ```
 
@@ -96,7 +96,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

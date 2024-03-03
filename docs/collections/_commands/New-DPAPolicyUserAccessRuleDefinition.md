@@ -19,23 +19,23 @@ New-DPAPolicyUserAccessRuleDefinition [-ruleName] <String> [[-userData] <PSObjec
 ```
 
 ## DESCRIPTION
-Creates user access rule definitions to provide as input when creating a new DPA policy with `New-DPAPolicy`
+Creates user access rule definitions to provide as input when creating a new DPA policy with \`New-DPAPolicy\`
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $AccessRules = New-DPAPolicyUserAccessRuleDefinition -ruleName SomeRuleName -userData $UserData -connectAs $ConnectAs -grantAccess 1 -idleTime 5 -timeZone Europe/London
 ```
 
 Defines a new user access rule according to the specified parameters.
 
-`$UserData` object is created using the `New-DPAPolicyUserDataDefinition` command
+\`$UserData\` object is created using the \`New-DPAPolicyUserDataDefinition\` command
 
-`$ConnectAs` object is created using the `New-DPAPolicyConnectAsDefinition` command
+\`$ConnectAs\` object is created using the \`New-DPAPolicyConnectAsDefinition\` command
 
 ### Example 2
-```powershell
+```
 $AccessRules = @()
 
 $AccessRules += New-DPAPolicyUserAccessRuleDefinition -ruleName SomeAccessRule -userData $UserData1 `
@@ -48,9 +48,9 @@ $AccessRules += New-DPAPolicyUserAccessRuleDefinition -ruleName AnotherAccessRul
 
 Defines a set of user access rules according to the specified parameters.
 
-`$UserData` object is created using the `New-DPAPolicyUserDataDefinition` command
+\`$UserData\` object is created using the \`New-DPAPolicyUserDataDefinition\` command
 
-`$ConnectAs` object is created using the `New-DPAPolicyConnectAsDefinition` command
+\`$ConnectAs\` object is created using the \`New-DPAPolicyConnectAsDefinition\` command
 
 ## PARAMETERS
 
@@ -190,8 +190,8 @@ Represented by zone name such as "America/Los_Angeles" or "Australia/Sydney".
 
 These names are defined by TZ database name.
 
-Full list can be found in the following links:
-- https://www.iana.org/time-zones
+Full list can be found in the following links: - https://www.iana.org/time-zones
+
 - https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 ```yaml
@@ -227,15 +227,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Management.Automation.PSObject
-
 ### System.Int32
-
 ### System.String[]
-
 ### System.Boolean
-
 ## OUTPUTS
 
 ### System.Object

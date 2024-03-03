@@ -38,14 +38,14 @@ Return SSH CA public key details
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPASSHPublicKey -AWS -workspaceId SomeID
 ```
 
 Get public key details for specified AWS workspace
 
 ### Example 2
-```powershell
+```
 Get-DPASSHPublicKey -AZURE -workspaceId SomeID -deploymentScript
 ```
 
@@ -63,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -AWS
-Specify to target AWS DPA resource identified by `workspaceId`
+Specify to target AWS DPA resource identified by \`workspaceId\`
 
 ```yaml
 Type: SwitchParameter
@@ -93,13 +93,13 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Azure
-Specify to target Azure DPA resource identified by `workspaceId`
+Specify to target Azure DPA resource identified by \`workspaceId\`
 
 ```yaml
 Type: SwitchParameter
@@ -108,13 +108,13 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -GCP
-Specify to target GCP DPA resource identified by `workspaceId`
+Specify to target GCP DPA resource identified by \`workspaceId\`
 
 ```yaml
 Type: SwitchParameter
@@ -123,7 +123,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -138,7 +138,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -149,9 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
 ### System.Object

@@ -22,14 +22,14 @@ Return details of DPA setting values
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPASetting
 ```
 
 Return all DPA settings
 
 ### Example 2
-```powershell
+```
 Get-DPASetting -FeatureName rdpKeyboardLayout
 ```
 
@@ -59,7 +59,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object

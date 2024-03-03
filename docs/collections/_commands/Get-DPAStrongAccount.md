@@ -28,21 +28,21 @@ Get details of configured string accounts for either virtual machines or databas
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPAStrongAccount
 ```
 
 Get all virtual machine strong accounts
 
 ### Example 2
-```powershell
+```
 Get-DPAStrongAccount -secret_type PCloudAccount
 ```
 
 Get all virtual machine strong accounts which are vaulted in Privilege Cloud
 
 ### Example 3
-```powershell
+```
 Get-DPAStrongAccount -databases
 ```
 
@@ -60,7 +60,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -87,9 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String[]
-
 ### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
 ### System.Object

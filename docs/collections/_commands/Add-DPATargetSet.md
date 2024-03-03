@@ -24,14 +24,14 @@ Configure a new target in DPA
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Add-DPATargetSet -name somedomain.com -description "Some Description" -secret_type PCloudAccount -secret_id 1234-abcd -type Domain
 ```
 
 Adds a target set for a strong account vaulted in Privilege Cloud
 
 ### Example 1
-```powershell
+```
 Add-DPATargetSet -name host.somedomain.com -description "Some Description" -secret_type ProvisionerUser -secret_id 1234-abcd -type Target
 ```
 
@@ -152,9 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Boolean
-
 ## OUTPUTS
 
 ### System.Object

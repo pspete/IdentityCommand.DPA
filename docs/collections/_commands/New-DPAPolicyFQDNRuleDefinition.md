@@ -22,21 +22,21 @@ Defines criteria based on FQDN rules specified in a DPA policy.
 
 Target machines matching the criteria will be accessible via a policy containing the rule(s).
 
-The object output by this function is used as input for the `fqdnRules` parameter of the `New-DPAPolicyProviderDefinition` function.
+The object output by this function is used as input for the \`fqdnRules\` parameter of the \`New-DPAPolicyProviderDefinition\` function.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 $FQDNrules = New-DPAPolicyFQDNRuleDefinition -operator EXACTLY -computernamePattern SomeHost -domain SomeDomain.com
 ```
 
 Creates the definition of an FQDN rule to exactly match a virtual machine named SomeHost.SomeDomain.com
 
-The `$FQDNrules` variable in the above example is used as input for the `fqdnRules` parameter of the `New-DPAPolicyProviderDefinition` function.
+The \`$FQDNrules\` variable in the above example is used as input for the \`fqdnRules\` parameter of the \`New-DPAPolicyProviderDefinition\` function.
 
 ### Example 2
-```powershell
+```
 $FQDNrules = @()
 $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator EXACTLY -computernamePattern SomeHost -domain SomeDomain.com
 $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator WILDCARD -computernamePattern '*-DEV-*' -domain SomeDomain.com
@@ -47,7 +47,7 @@ $FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator PREFIX -computernamePatt
 
 Creates a definition of FQDN rules to match virtual machines according to the parameter values specified.
 
-The `$FQDNrules` variable in the above example is used as input for the `fqdnRules` parameter of the `New-DPAPolicyProviderDefinition` function.
+The \`$FQDNrules\` variable in the above example is used as input for the \`fqdnRules\` parameter of the \`New-DPAPolicyProviderDefinition\` function.
 
 ## PARAMETERS
 
@@ -103,7 +103,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object
