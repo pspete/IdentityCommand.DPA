@@ -4,11 +4,11 @@
 Write-Host 'Installing Required Modules:' -ForegroundColor Yellow
 
 $RequiredModules = @(
-	#"PowerShellGet"
 	'Pester',
 	'PSScriptAnalyzer',
 	'coveralls',
-	'PSCodeCovIo'
+	'PSCodeCovIo',
+	'IdentityCommand'
 )
 
 #---------------------------------#
