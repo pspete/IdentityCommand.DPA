@@ -289,12 +289,12 @@ function Set-DPASetting {
             If ($PSCmdlet.ParameterSetName -eq $PSItem) {
 
                 $ParameterSetName = $PSItem
-                Write-Verbose $ParameterSetName
+
                 $Properties.Add($ParameterSetName, @{})
 
                 #Command is Updating related Setting(s) for ParameterSetName
                 $PolicySettings.$ParameterSetName.PSObject.Properties.Name | ForEach-Object {
-                    Write-Verbose $PSItem
+
                     #Iterate setting names, match against function parameters
                     if ($boundParameters.ContainsKey($PSItem)) {
                         #setting is being updated

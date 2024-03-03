@@ -46,7 +46,7 @@ build_script:
   - pwsh.exe -File .\build\build.ps1
 
 #test_script:
-#  - pwsh.exe -File .\build\test.ps1
+  - pwsh.exe -File .\build\test.ps1
 
 #deploy_script:
   - pwsh.exe -File .\build\deploy-psgallery.ps1

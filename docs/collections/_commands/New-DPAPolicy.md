@@ -75,10 +75,10 @@ Creates a draft policy with settings according to the parameter values.
 
 ### Example 6
 ```powershell
-$ConnectAs = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
-$ConnectAs = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs
-$ConnectAs = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs
-$ConnectAs = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs
+$ConnectAs1 = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
+$ConnectAs1 = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs1
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs1
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs2
 
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
 $UserData = New-DPAPolicyUserDataDefinition -Role -name "SOME_TEAM_ROLE" -UserDataDefinition $UserData

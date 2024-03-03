@@ -1,6 +1,6 @@
 # .ExternalHelp IdentityCommand.DPA-help.xml
 function Remove-DPAStrongAccount {
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', "", Justification = 'False Positive')]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'False Positive')]
     [CmdletBinding(SupportsShouldProcess)]
     param(
         [parameter(
@@ -10,7 +10,7 @@ function Remove-DPAStrongAccount {
         [String]$secret_id,
 
         [parameter(
-            Mandatory = $true,
+            Mandatory = $false,
             ValueFromPipelinebyPropertyName = $true,
             ParameterSetName = 'Database'
         )]
