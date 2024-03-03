@@ -12,9 +12,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - N/A
 
-## 0.0.1 - 28-02-2024
+## 0.1.9 - 03-03-2024
 
-Initial commit of `IdentityCommand.DPA` module
+Initial release of `IdentityCommand.DPA` module
 
 ### Added
 - `Add-DPATargetSet`
