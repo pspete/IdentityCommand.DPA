@@ -22,28 +22,28 @@ Gets DPA session diagnostic data
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 Get-DPASession
 ```
 
 Gets session diagnostic data for the previous 24 hours
 
 ### Example 2
-```powershell
+```
 Get-DPASession -maxStartedTime (Get-Date 03-03-2024)
 ```
 
 Gets session diagnostic data for 24 hours preceding the specified date
 
 ### Example 3
-```powershell
+```
 Get-DPASession -maxStartedTime (Get-Date 03-03-2024) -minStartedTime (Get-Date 01-03-2024)
 ```
 
 Gets session diagnostic data between the specified dates
 
 ### Example 4
-```powershell
+```
 Get-DPASession -minStartedTime (Get-Date 01-03-2024)
 ```
 
