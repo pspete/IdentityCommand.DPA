@@ -14,7 +14,7 @@ Describe 'Module' -Tag 'Consistency' {
 	$Here = Split-Path -Parent $PSCommandPath
 
 	#Assume ModuleName from Repository Root folder
-	$ModuleName = Split-Path (Split-Path $Here -Parent) -Leaf
+	$ModuleName = (Split-Path (Split-Path $Here -Parent) -Leaf).Replace('-', '.')
 
 	#Resolve Path to Module Directory
 	$ModulePath = Resolve-Path "$Here\..\$ModuleName"
