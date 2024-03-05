@@ -81,9 +81,9 @@ A complete example to create a new policy follows:
 ```powershell
 #Create ConnectAs definitions for the policy userAccessRules
 $ConnectAs1 = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
-$ConnectAs1 = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs
-$ConnectAs2 = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs
-$ConnectAs2 = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs
+$ConnectAs1 = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs1
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs1
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs2
 
 #Create User Data definitions for the policy user AccessRules
 $UserData1 = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
@@ -153,7 +153,7 @@ The full list of commands currently available in the _`IdentityCommand.DPA`_ mod
 | Function                               | Description                                                                      |
 |----------------------------------------|----------------------------------------------------------------------------------|
 | `Connect-DPATenant`                    | Obtains a Bearer token from an authenticated `IdentityCommand` session for DPA   |
-| `Connect-DPATarget`                    | Get RDP file for connection to DPA target                                        |
+| `Connect-DPATarget`                    | Connect via RDP or SSH to DPA targets                                            |
 | `Add-DPATargetSet`                     | Adds a DPA Target Set                                                            |
 | `Get-DPACertificate`                   | Get details of DPA certificates                                                  |
 | `Get-DPAConnector`                     | Get details of DPA connectors                                                    |
