@@ -257,11 +257,15 @@
       <command:verb>Connect</command:verb>
       <command:noun>DPATarget</command:noun>
       <maml:description>
-        <maml:para>Get RDP file for DPA connection</maml:para>
+        <maml:para>Initiates connection to RDP or SSH targets via DPA</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Outputs RDP file content for DPA connection. To be updated to automatically initiate the connection</maml:para>
+      <maml:para>Automatically invokes RDP or SSH connections to targets via the DPA service, using either vaulted credentials or zero standing privilege connections.</maml:para>
+      <maml:para>A users will be prompted for authentication by the DPA service and must satisfy any configured MFA conditions in order for connection to the target to be completed.</maml:para>
+      <maml:para>For SSH connections, an SSH client must be available from the terminal in which the command is being executed.</maml:para>
+      <maml:para>The SSH connection string being executed will be output in the debug stream of the module.</maml:para>
+      <maml:para>RDP files are saved to, and invoked from, the local temp directory.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -322,6 +326,143 @@
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
           <dev:type>
             <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>RDP</maml:name>
+          <maml:description>
+            <maml:para>Specify to invoke RDP connection to target</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-DPATarget</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetAddress</maml:name>
+          <maml:description>
+            <maml:para>The address of the target</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetUser</maml:name>
+          <maml:description>
+            <maml:para>The vaulted credential to use</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetDomain</maml:name>
+          <maml:description>
+            <maml:para>The domain of the user</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>logicalName</maml:name>
+          <maml:description>
+            <maml:para>The logical network name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>SSH</maml:name>
+          <maml:description>
+            <maml:para>Specify to invoke SSH connection to target</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-DPATarget</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetAddress</maml:name>
+          <maml:description>
+            <maml:para>The address of the target</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetDomain</maml:name>
+          <maml:description>
+            <maml:para>The domain of the user</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>RDP</maml:name>
+          <maml:description>
+            <maml:para>Specify to invoke RDP connection to target</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Connect-DPATarget</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>targetAddress</maml:name>
+          <maml:description>
+            <maml:para>The address of the target</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>SSH</maml:name>
+          <maml:description>
+            <maml:para>Specify to invoke SSH connection to target</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -389,6 +530,30 @@
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>RDP</maml:name>
+        <maml:description>
+          <maml:para>Specify to invoke RDP connection to target</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>SSH</maml:name>
+        <maml:description>
+          <maml:para>Specify to invoke SSH connection to target</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes />
     <command:returnValues />
@@ -400,23 +565,37 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>Connect-DPATarget -targetAddress someserver.somedomain.com</dev:code>
+        <dev:code>Connect-DPATarget -RDP -targetAddress someserver.somedomain.com</dev:code>
         <dev:remarks>
-          <maml:para>Generates RDP file for zero standing privilege connection to target</maml:para>
+          <maml:para>Connects to RDP session for zero standing privilege connection to target</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>Connect-DPATarget -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain</dev:code>
+        <dev:code>Connect-DPATarget -RDP -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain</dev:code>
         <dev:remarks>
-          <maml:para>Generates RDP file for vaulted credential access to target</maml:para>
+          <maml:para>Connects to RDP session for vaulted credential access to target</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 3 --------------------------</maml:title>
-        <dev:code>Connect-DPATarget -targetAddress someserver.somedomain.com -targetDomain somedomain</dev:code>
+        <dev:code>Connect-DPATarget -RDP -targetAddress someserver.somedomain.com -targetDomain somedomain</dev:code>
         <dev:remarks>
-          <maml:para>Generates RDP file for zero standing privilege connection to cloud instance target</maml:para>
+          <maml:para>Connects to RDP session for zero standing privilege connection to cloud instance target</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>Connect-DPATarget -SSH -targetAddress someserver.somedomain.com</dev:code>
+        <dev:remarks>
+          <maml:para>Initiates SSH session for zero standing privilege connection to target</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <dev:code>Connect-DPATarget -SSH -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain</dev:code>
+        <dev:remarks>
+          <maml:para>Connects to SSH session for vaulted credential access to target</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

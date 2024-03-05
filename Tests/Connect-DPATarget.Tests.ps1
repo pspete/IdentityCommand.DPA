@@ -45,11 +45,26 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
                 }
             }
 
+            Mock ssh -MockWith {}
+            Mock Get-Item -MockWith {}
+            Mock Invoke-Item -MockWith {}
+            Mock Get-DPAModuleData -MockWith {
+                [ordered]@{
+                    'tenant_url' = 'https://sometenant.dpa.cyberark.cloud'
+                    'user'       = 'someuser@somedomain.com'
+                }
+            }
+
+        }
+
+        AfterAll {
+            Remove-Item -Path $(Join-Path $([System.IO.Path]::GetTempPath()) 'dpa _a SomeCPU.rdp') -Force -ErrorAction SilentlyContinue
+            Remove-Item -Path $(Join-Path $([System.IO.Path]::GetTempPath()) 'dpa _a SomeCPU _d SomeDomain.rdp') -Force -ErrorAction SilentlyContinue
         }
 
         Context 'Input - RDP - Vaulted Creds' {
             BeforeEach {
-                $response = Connect-DPATarget -targetUser SomeUser -targetAddress SomeCPU -targetDomain SomeDomain -logicalName SomeNet -elevatedPrivileges $true
+                $response = Connect-DPATarget -RDP -targetUser SomeUser -targetAddress SomeCPU -targetDomain SomeDomain -logicalName SomeNet -elevatedPrivileges $true
             }
             It 'sends request' {
 
@@ -125,11 +140,15 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
 
             }
 
+            It 'outputs expected rdp file' {
+                Test-Path -Path $(Join-Path $([System.IO.Path]::GetTempPath()) 'dpa _a SomeCPU _d SomeDomain.rdp') | Should -BeTrue
+            }
+
         }
 
         Context 'Input - RDP - ZSP' {
             BeforeEach {
-                $response = Connect-DPATarget -targetAddress SomeCPU
+                $response = Connect-DPATarget -RDP -targetAddress SomeCPU
             }
             It 'sends request' {
 
@@ -176,6 +195,82 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
                 Assert-MockCalled Invoke-IDRestMethod -ParameterFilter {
                     $Request = $Body | ConvertFrom-Json
                     $Request.tokenParameters.targetAddress -eq 'SomeCPU'
+
+                } -Times 1 -Exactly -Scope It
+
+            }
+
+            It 'outputs expected rdp file' {
+                Test-Path -Path $(Join-Path $([System.IO.Path]::GetTempPath()) 'dpa _a SomeCPU.rdp') | Should -BeTrue
+            }
+
+        }
+
+        Context 'Input - SSH - Vaulted Creds' {
+
+            It 'does not send a request' {
+
+                Assert-MockCalled Invoke-IDRestMethod -Times 0 -Exactly -Scope It
+
+            }
+
+            It 'Invokes expected SSH command - all parameters' {
+                Connect-DPATarget -SSH -targetUser SomeUser -targetAddress SomeCPU -targetDomain SomeDomain -logicalName SomeNet
+                Assert-MockCalled ssh -ParameterFilter {
+
+                    $args[0] -eq 'someuser@somedomain.com#sometenant@SomeUser#SomeDomain@SomeCPU#SomeNet@sometenant.ssh.cyberark.cloud'
+
+                } -Times 1 -Exactly -Scope It
+
+            }
+
+            It 'Invokes expected SSH command - mandatory parameters' {
+                Connect-DPATarget -SSH -targetUser SomeUser -targetAddress SomeCPU
+                Assert-MockCalled ssh -ParameterFilter {
+
+                    $args[0] -eq 'someuser@somedomain.com#sometenant@SomeUser@SomeCPU@sometenant.ssh.cyberark.cloud'
+
+                } -Times 1 -Exactly -Scope It
+
+            }
+
+            It 'Invokes expected SSH command - optional domain' {
+                Connect-DPATarget -SSH -targetUser SomeUser -targetAddress SomeCPU -targetDomain SomeDomain
+                Assert-MockCalled ssh -ParameterFilter {
+
+                    $args[0] -eq 'someuser@somedomain.com#sometenant@SomeUser#SomeDomain@SomeCPU@sometenant.ssh.cyberark.cloud'
+
+                } -Times 1 -Exactly -Scope It
+
+            }
+
+            It 'Invokes expected SSH command - optional logicalName' {
+                Connect-DPATarget -SSH -targetUser SomeUser -targetAddress SomeCPU -logicalName SomeNet
+                Assert-MockCalled ssh -ParameterFilter {
+
+                    $args[0] -eq 'someuser@somedomain.com#sometenant@SomeUser@SomeCPU#SomeNet@sometenant.ssh.cyberark.cloud'
+
+                } -Times 1 -Exactly -Scope It
+
+            }
+
+        }
+
+        Context 'Input - SSH - ZSP' {
+            BeforeEach {
+                Connect-DPATarget -SSH -targetAddress SomeCPU
+            }
+            It 'does not send a request' {
+
+                Assert-MockCalled Invoke-IDRestMethod -Times 0 -Exactly -Scope It
+
+            }
+
+            It 'Invokes expected SSH command' {
+
+                Assert-MockCalled ssh -ParameterFilter {
+
+                    $args[0] -eq 'someuser@somedomain.com#sometenant@SomeCPU@sometenant.ssh.cyberark.cloud'
 
                 } -Times 1 -Exactly -Scope It
 

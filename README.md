@@ -4,22 +4,34 @@
 
 # IdentityCommand.DPA
 
-IdentityCommand.DPA [Work in Progress] is a PowerShell module that provides a set of easy-to-use commands, allowing you to interact with the API for a CyberArk Dynamic Privileged Access from within the PowerShell environment.
+**IdentityCommand.DPA** is a PowerShell module that provides a set of easy-to-use commands, allowing you to interact with the API for a **CyberArk Dynamic Privileged Access** from within the PowerShell environment.
 
-- **Prior to a Version 1.0.0 release**:
-  - Expect changes
-  - Things may break
-  - Issues / PRs are encouraged & appreciated
+| Main Branch              | Latest Build            | CodeFactor                | Coverage                    |  PowerShell Gallery       |  License                   |
+|--------------------------|-------------------------|---------------------------|-----------------------------|---------------------------|----------------------------|
+|[![appveyor][]][av-site]  |[![tests][]][tests-site] | [![codefactor][]][cf-site]| [![codecov][]][codecov-link]| [![psgallery][]][ps-site] |[![license][]][license-link]|
 
-----------
 
-## Project Objective
-
-- To develop & publish consistently coded PowerShell functions for available CyberArk DPA APIs.
+[appveyor]:https://ci.appveyor.com/api/projects/status/q2av77njofnsul92/branch/main?svg=true
+[av-site]:https://ci.appveyor.com/project/pspete/IdentityCommand-DPA/branch/main
+[psgallery]:https://img.shields.io/powershellgallery/v/IdentityCommand.DPA.svg
+[ps-site]:https://www.powershellgallery.com/packages/IdentityCommand.DPA
+[tests]:https://img.shields.io/appveyor/tests/pspete/IdentityCommand-DPA.svg
+[tests-site]:https://ci.appveyor.com/project/pspete/IdentityCommand-DPA
+[downloads]:https://img.shields.io/powershellgallery/dt/IdentityCommand.DPA.svg?color=blue
+[cf-site]:https://www.codefactor.io/repository/github/pspete/IdentityCommand.DPA
+[codefactor]:https://www.codefactor.io/repository/github/pspete/IdentityCommand.DPA/badge
+[codecov]:https://codecov.io/gh/pspete/IdentityCommand.DPA/branch/main/graph/badge.svg
+[codecov-link]:https://codecov.io/gh/pspete/IdentityCommand.DPA
+[license]:https://img.shields.io/github/license/pspete/IdentityCommand.DPA.svg
+[license-link]:https://github.com/pspete/IdentityCommand.DPA/blob/main/LICENSE
 
 ## Using the Module
 
 The module requires authentication to the CyberArk Identity platform using the `IdentityCommand` module.
+
+The `IdentityCommand` module must be installed and available in order to use `IdentityCommand.DPA`.
+
+An overview of some of the features of the module are found in the below sections.
 
 ### DPA Authentication
 
@@ -28,6 +40,84 @@ After authentication to an Identity tenant using the `IdentityCommand` module, t
 ```powershell
 Connect-DPATenant -tenant_url https://sometenant.dpa.cyberark.cloud
 ```
+
+### DPA Connections
+
+The `Connect-DPATarget` command can be use to initiate DPA connections to targets.
+
+#### SSH
+
+SSH connections to targets using the DPA zero standing privilege method can be achieved with the following example:
+```powershell
+Connect-DPATarget -SSH -targetAddress someserver.somedomain.com
+```
+
+SSH connections to targets using vaulted credentials follow a similar pattern:
+```powershell
+Connect-DPATarget -SSH -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain
+```
+
+For SSH connections to succeed, an SSH client must be available from the terminal in which the command is being executed.
+
+#### RDP
+
+`Connect-DPATarget` can also request RDP files which can be used to connected through he DPA gateway, the following example facilitates a zero standing privilege RDP connection:
+```powershell
+Connect-DPATarget -RDP -targetAddress someserver.somedomain.com
+```
+
+Vaulted credentials can also be used for RDP connections, as shown in the below example:
+```powershell
+Connect-DPATarget -RDP -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain
+```
+
+### DPA Policies
+DPA recurring access policies can be created after defining PowerShell objects to help create the policy configuration.
+
+A number of helper functions are included in the module which can be used to provide the required data to the `New-DPAPolicy` command.
+
+A complete example to create a new policy follows:
+
+```powershell
+#Create ConnectAs definitions for the policy userAccessRules
+$ConnectAs1 = New-DPAPolicyConnectAsDefinition -OnPrem -assignGroups Administrators
+$ConnectAs1 = New-DPAPolicyConnectAsDefinition -AWS -ssh "ec2-user" -assignGroups Administrators, "Remote Desktop Users" -connectAsDefinition $ConnectAs
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -Azure -ssh "azureuser" -connectAsDefinition $ConnectAs
+$ConnectAs2 = New-DPAPolicyConnectAsDefinition -GCP -ssh "root" -connectAsDefinition $ConnectAs
+
+#Create User Data definitions for the policy user AccessRules
+$UserData1 = New-DPAPolicyUserDataDefinition -Role -name "DEV_TEAM_ROLE"
+$UserData1 = New-DPAPolicyUserDataDefinition -Role -name "SOME_TEAM_ROLE" -UserDataDefinition $UserData1
+$UserData1 = New-DPAPolicyUserDataDefinition -Group -name "DEV_TEAM_GROUP" -UserDataDefinition $UserData1
+$UserData2 = New-DPAPolicyUserDataDefinition -Group -name "SOME_TEAM_GROUP" -UserDataDefinition $UserData1
+$UserData2 = New-DPAPolicyUserDataDefinition -User -name SomeUser -UserDataDefinition $UserData2
+$UserData2 = New-DPAPolicyUserDataDefinition -User -name SomeOtherUser -UserDataDefinition $UserData2
+
+#Create AccessRules definitions for the policy using the ConnectAs & User Data definitions
+$AccessRules = @()
+$AccessRules += New-DPAPolicyUserAccessRuleDefinition -ruleName SomeAccessRule -userData $UserData1 -connectAs $ConnectAs1 -timeZone Europe/London
+$AccessRules += New-DPAPolicyUserAccessRuleDefinition -ruleName AnotherAccessRule -userData $UserData2 -connectAs $ConnectAs2 -timeZone America/Costa_Rica
+
+#Define FQDN Rules for connections to On-Prem resources
+$FQDNrules = @()
+$FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator EXACTLY -computernamePattern SomeHost -domain SomeDomain.com
+$FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator WILDCARD -computernamePattern *-DEV-* -domain SomeDomain.com
+$FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator SUFFIX -computernamePattern '-Prod' -domain SomeDomain.com
+$FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator CONTAINS -computernamePattern SQL -domain SomeDomain.com
+$FQDNrules += New-DPAPolicyFQDNRuleDefinition -operator PREFIX -computernamePattern DC1 -domain SomeDomain.com
+
+#Create Provider definitions for connections to on-prem and cloud resources
+$Providers = New-DPAPolicyProviderDefinition -OnPrem -fqdnRulesConjunction OR -fqdnRules $FQDNrules
+$Providers = New-DPAPolicyProviderDefinition -AWS -regions "us-east-1","us-east-2" -tags @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Providers
+$Providers = New-DPAPolicyProviderDefinition -Azure -regions "eastus2","eastus" -tags @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Providers
+$Providers = New-DPAPolicyProviderDefinition -GCP -regions "asia-east1","us-east1" -labels @{"Key"="env";"Value"=@("prod")} -ProviderDefinition $Providers
+
+#Create the new DPA Policy using the Provider and Access Rule definitions previously created
+New-DPAPolicy -policyName SomePolicy -status Enabled -description "Some Description" -providersData $Providers -userAccessRules $AccessRules
+```
+
+Running the code above creates a complete policy with settings according to the parameter values.
+
 
 ### Module Scope Variables & Command  Invocation Data
 
@@ -56,7 +146,9 @@ Return data also includes details such as session start time, elapsed time, last
 
 ## List Of Commands
 
-The commands currently available in the _IdentityCommand.DPA_ module are listed here:
+The examples provided above are not exhaustive, further commands enabling configuration and administration of the DPA platform are available in the module.
+
+The full list of commands currently available in the _`IdentityCommand.DPA`_ module are detailed here:
 
 | Function                               | Description                                                                      |
 |----------------------------------------|----------------------------------------------------------------------------------|
