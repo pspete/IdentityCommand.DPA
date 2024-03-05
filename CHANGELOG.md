@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - N/A
 
-## 0.2.11
+## 0.2.11 - 05-03-2024
 
 ### Added
 - N/A
