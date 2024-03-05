@@ -8,47 +8,79 @@ schema: 2.0.0
 # Connect-DPATarget
 
 ## SYNOPSIS
-Get RDP file for DPA connection
+Initiates connection to RDP or SSH targets via DPA
 
 ## SYNTAX
 
-### DPA-RDP (Default)
-```
-Connect-DPATarget -targetAddress <String> [-targetDomain <String>] [<CommonParameters>]
-```
-
 ### Vaulted-RDP
 ```
-Connect-DPATarget -targetAddress <String> -targetUser <String> [-targetDomain <String>] [-logicalName <String>]
- [-elevatedPrivileges <Boolean>] [<CommonParameters>]
+Connect-DPATarget [-RDP] -targetAddress <String> -targetUser <String> [-targetDomain <String>]
+ [-logicalName <String>] [-elevatedPrivileges <Boolean>] [<CommonParameters>]
+```
+
+### DPA-RDP
+```
+Connect-DPATarget [-RDP] -targetAddress <String> [-targetDomain <String>] [<CommonParameters>]
+```
+
+### Vaulted-SSH
+```
+Connect-DPATarget [-SSH] -targetAddress <String> -targetUser <String> [-targetDomain <String>]
+ [-logicalName <String>] [<CommonParameters>]
+```
+
+### DPA-SSH
+```
+Connect-DPATarget [-SSH] -targetAddress <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Outputs RDP file content for DPA connection.
-To be updated to automatically initiate the connection
+Automatically invokes RDP or SSH connections to targets via the DPA service, using either vaulted credentials or zero standing privilege connections.
+
+A users will be prompted for authentication by the DPA service and must satisfy any configured MFA conditions in order for connection to the target to be completed.
+
+For SSH connections, an SSH client must be available from the terminal in which the command is being executed.
+
+The SSH connection string being executed will be output in the debug stream of the module.
+
+RDP files are saved to, and invoked from, the local temp directory.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Connect-DPATarget -targetAddress someserver.somedomain.com
+Connect-DPATarget -RDP -targetAddress someserver.somedomain.com
 ```
 
-Generates RDP file for zero standing privilege connection to target
+Connects to RDP session for zero standing privilege connection to target
 
 ### Example 2
 ```
-Connect-DPATarget -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain
+Connect-DPATarget -RDP -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain
 ```
 
-Generates RDP file for vaulted credential access to target
+Connects to RDP session for vaulted credential access to target
 
 ### Example 3
 ```
-Connect-DPATarget -targetAddress someserver.somedomain.com -targetDomain somedomain
+Connect-DPATarget -RDP -targetAddress someserver.somedomain.com -targetDomain somedomain
 ```
 
-Generates RDP file for zero standing privilege connection to cloud instance target
+Connects to RDP session for zero standing privilege connection to cloud instance target
+
+### Example 4
+```
+Connect-DPATarget -SSH -targetAddress someserver.somedomain.com
+```
+
+Initiates SSH session for zero standing privilege connection to target
+
+### Example 5
+```
+Connect-DPATarget -SSH -targetAddress sometarget.somedomain.com -targetUser someuser -targetDomain somedomain
+```
+
+Connects to SSH session for vaulted credential access to target
 
 ## PARAMETERS
 
@@ -72,7 +104,7 @@ The vaulted credential to use
 
 ```yaml
 Type: String
-Parameter Sets: Vaulted-RDP
+Parameter Sets: Vaulted-RDP, Vaulted-SSH
 Aliases:
 
 Required: True
@@ -87,7 +119,7 @@ The domain of the user
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Vaulted-RDP, DPA-RDP, Vaulted-SSH
 Aliases:
 
 Required: False
@@ -102,7 +134,7 @@ The logical network name
 
 ```yaml
 Type: String
-Parameter Sets: Vaulted-RDP
+Parameter Sets: Vaulted-RDP, Vaulted-SSH
 Aliases:
 
 Required: False
@@ -123,6 +155,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RDP
+Specify to invoke RDP connection to target
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Vaulted-RDP, DPA-RDP
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SSH
+Specify to invoke SSH connection to target
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Vaulted-SSH, DPA-SSH
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
