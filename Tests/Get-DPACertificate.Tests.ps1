@@ -40,7 +40,10 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
             New-Variable -Name ISPSSSession -Value $ISPSSSession -Scope Script -Force
 
             Mock Invoke-IDRestMethod -MockWith {
-                [pscustomobject]@{'items' = 'value' }
+                [pscustomobject]@{
+                    'certificates' = [pscustomobject]@{'items' = 'value' }
+                }
+
             }
 
             $response = Get-DPACertificate

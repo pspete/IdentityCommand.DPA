@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.
 - N/A
 
 ### Fixed
-- N/A
+- `Get-DPACertificate`
+  - Updated to return correct property of output value.
 
 ## 0.2.11 - 05-03-2024
 

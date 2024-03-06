@@ -16,7 +16,7 @@ function Get-DPACertificate {
 
         if ($null -ne $result) {
 
-            $result.items
+            $result.certificates.items
 
         }
 
