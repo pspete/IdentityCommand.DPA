@@ -43,7 +43,7 @@ Describe $($PSCommandPath -Replace '.Tests.ps1') {
                 [pscustomobject]@{
                     'organizations' = 'value'
                     'subscriptions' = 'value'
-                    'resources'     = 'value'
+                    'items'         = 'value'
                     'config'        = $(@{'config' = 'somevalue' } | ConvertTo-Json)
                 }
             }

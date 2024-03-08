@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - `Get-DPACertificate`
   - Updated to return correct property of output value.
+- `Get-DPAResource`
+  - Updated to return correct property of output value.
 
 ## 0.2.11 - 05-03-2024
 

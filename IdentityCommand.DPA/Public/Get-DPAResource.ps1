@@ -83,7 +83,7 @@ function Get-DPAResource {
                         $returnProp = 'subscriptions' #* Azure
                     }
                     'adb/resources' {
-                        $returnProp = 'resources' #? Asumption for DB
+                        $returnProp = 'items'
                     }
                     default {
                         $result #TODO : catch all - delete if never needed
@@ -91,8 +91,10 @@ function Get-DPAResource {
                 }
 
                 If ($null -ne $returnProp) {
+
                     #Return returnProp data if set
                     $result.$returnProp
+
                 }
 
             } Else {
